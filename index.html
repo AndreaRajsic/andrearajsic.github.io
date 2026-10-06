@@ -1,10 +1,511 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Andrea Rajsic</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Andrea Rajšić — planetary geophysicist studying impact cratering, planetary seismology, gravity, and crustal evolution." />
+  <title>Andrea Rajšić | Planetary Geophysicist</title>
+  <style>
+    :root{
+      --ink:#18212a;
+      --muted:#5f6b76;
+      --paper:#f7f8fa;
+      --white:#ffffff;
+      --navy:#14233a;
+      --navy2:#22395d;
+      --accent:#b66a3c;
+      --line:#dfe5eb;
+      --soft:#eef2f6;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.65;
+    }
+    a{color:inherit}
+    .wrap{width:min(var(--max), calc(100% - 36px)); margin:auto}
+    .topbar{
+      position:sticky; top:0; z-index:100;
+      background:rgba(20,35,58,.97);
+      border-bottom:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(10px);
+    }
+    .nav{
+      min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .brand{
+      color:#fff; text-decoration:none; font-weight:760; letter-spacing:.01em; white-space:nowrap;
+      font-size:1.08rem;
+    }
+    .navlinks{
+      display:flex; gap:18px; align-items:center; overflow-x:auto; padding:8px 0;
+      scrollbar-width:none;
+    }
+    .navlinks::-webkit-scrollbar{display:none}
+    .navlinks a{
+      color:#dbe5f2; text-decoration:none; font-size:.91rem; white-space:nowrap;
+      border-bottom:2px solid transparent; padding:10px 0 8px;
+    }
+    .navlinks a:hover{color:#fff; border-color:var(--accent)}
+    .hero{
+      color:#fff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(182,106,60,.28), transparent 28%),
+        radial-gradient(circle at 8% 78%, rgba(72,107,152,.36), transparent 32%),
+        linear-gradient(135deg, #111c2d 0%, #1b3151 68%, #1d2940 100%);
+      padding:92px 0 76px;
+    }
+    .hero-grid{display:grid; grid-template-columns:1.55fr .75fr; gap:64px; align-items:center}
+    .eyebrow{
+      text-transform:uppercase; letter-spacing:.17em; font-weight:700; font-size:.79rem;
+      color:#e9c6b1; margin:0 0 16px;
+    }
+    h1{font-size:clamp(3rem,8vw,5.6rem); line-height:.95; margin:0 0 18px; letter-spacing:-.04em}
+    .hero h2{font-size:clamp(1.25rem,3vw,1.75rem); font-weight:500; margin:0 0 24px; color:#dfe8f3}
+    .lead{font-size:1.16rem; max-width:760px; color:#e8edf3; margin:0 0 28px}
+    .hero-meta{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 28px}
+    .pill{
+      display:inline-flex; padding:7px 11px; border-radius:999px; font-size:.83rem;
+      background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.16); color:#f5f7fb
+    }
+    .actions{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{
+      display:inline-block; text-decoration:none; padding:11px 16px; border-radius:8px;
+      font-weight:700; font-size:.93rem;
+    }
+    .btn.primary{background:#fff; color:var(--navy)}
+    .btn.secondary{border:1px solid rgba(255,255,255,.35); color:#fff}
+    .portrait{
+      width:min(310px, 80vw); aspect-ratio:1; margin:auto; border-radius:50%;
+      display:block; object-fit:cover; object-position:center 30%;
+      border:1px solid rgba(255,255,255,.22); box-shadow:0 25px 70px rgba(0,0,0,.25);
+      background:#d9dde3;
+    }
+    .portrait-note{text-align:center; font-size:.8rem; color:#aebcd0; margin-top:13px}
+    main section{padding:78px 0}
+    main section:nth-of-type(even){background:var(--white)}
+    .section-head{display:grid; grid-template-columns:.8fr 1.8fr; gap:40px; align-items:start; margin-bottom:38px}
+    .kicker{color:var(--accent); text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; font-weight:800; margin-bottom:8px}
+    h2.section-title{font-family:Georgia,serif; font-size:clamp(2rem,5vw,3.25rem); line-height:1.08; margin:0}
+    .section-intro{font-size:1.05rem; color:var(--muted); margin:5px 0 0; max-width:760px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:14px; padding:25px;
+      box-shadow:0 8px 24px rgba(30,45,65,.045);
+    }
+    section:nth-of-type(even) .card{background:var(--paper)}
+    .card .num{font-family:Georgia,serif; font-size:1.2rem; color:var(--accent); font-weight:700}
+    .card h3{font-size:1.17rem; line-height:1.3; margin:8px 0 10px}
+    .card p{margin:0; color:var(--muted); font-size:.96rem}
+    .pub-list{display:grid; gap:13px}
+    .pub{
+      padding:18px 20px; background:#fff; border:1px solid var(--line); border-radius:12px;
+    }
+    section:nth-of-type(even) .pub{background:var(--paper)}
+    .pub-year{font-size:.8rem; font-weight:800; letter-spacing:.1em; color:var(--accent)}
+    .pub-title{font-weight:760; margin:3px 0 4px}
+    .planet-tags{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 8px}
+    .planet{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 9px; border-radius:999px; font-size:.78rem; font-weight:700;
+      background:var(--soft); border:1px solid var(--line); color:var(--navy2);
+    }
+    .planet .icon{font-size:.95rem; line-height:1}
+    .pub-meta{color:var(--muted); font-size:.92rem}
+    .pub a{color:#214f80; text-decoration:none}
+    .pub a:hover{text-decoration:underline}
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    .person-group{margin-bottom:30px}
+    .person-group h3{font-family:Georgia,serif; font-size:1.45rem; margin:0 0 12px}
+    .people-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    .person{
+      padding:15px 16px; border:1px solid var(--line); border-radius:10px; background:#fff;
+    }
+    section:nth-of-type(even) .person{background:var(--paper)}
+    .person strong{display:block}
+    .person span{font-size:.89rem; color:var(--muted)}
+    .timeline{display:grid; gap:14px}
+    .event{
+      display:grid; grid-template-columns:90px 1fr; gap:18px; padding:16px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .year{font-weight:800; color:var(--accent)}
+    .event h3{margin:0 0 3px; font-size:1rem}
+    .event p{margin:0; color:var(--muted); font-size:.92rem}
+    .cta{
+      background:var(--navy); color:white; border-radius:18px; padding:36px;
+      display:flex; align-items:center; justify-content:space-between; gap:30px;
+    }
+    .cta h3{font-family:Georgia,serif; font-size:2rem; margin:0 0 6px}
+    .cta p{margin:0; color:#cfdae8}
+    footer{background:#0f1929; color:#aebbd0; padding:34px 0}
+    footer .wrap{display:flex; justify-content:space-between; gap:22px; flex-wrap:wrap}
+    footer a{color:#e1e7f0; text-decoration:none}
+    .small{font-size:.87rem}
+    @media(max-width:900px){
+      .nav{align-items:flex-start; flex-direction:column; padding:13px 0 8px}
+      .navlinks{width:100%}
+      .hero-grid,.section-head,.two-col{grid-template-columns:1fr}
+      .hero-grid{gap:42px}
+      .portrait{width:220px}
+      .cards{grid-template-columns:1fr}
+      .people-grid{grid-template-columns:1fr}
+      .event{grid-template-columns:70px 1fr}
+      .cta{align-items:flex-start; flex-direction:column}
+    }
+  </style>
 </head>
 <body>
-  <h1>Andrea Rajsic</h1>
-  <p>Website coming soon.</p>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home">Andrea Rajšić <span style="font-weight:500; opacity:.85;">(Rajsha) [she/her]</span></a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#people">People & Mentoring</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#talks">Talks</a>
+        <a href="#outreach">Outreach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Planetary Geophysics · Impact Cratering</p>
+        <h1>Andrea Rajšić <span style="font-size:.34em; font-weight:500; letter-spacing:0; white-space:nowrap;">(Rajsha) [she/her]</span></h1>
+        <h2>Planetary geophysicist linking impact physics to the geophysical record.</h2>
+        <p class="lead">
+          I use impact cratering as a natural laboratory for understanding how extreme deformation changes
+          planetary crusts and how those changes are recorded in seismic, gravity, and structural observations.
+          My work combines shock-physics modeling with planetary geophysics to reconstruct the physical and
+          thermomechanical evolution of planetary crusts.
+        </p>
+        <div class="hero-meta">
+          <span class="pill">Research Scientist · Brown University</span>
+          <span class="pill">Deputy PI · LunaSCOPE NASA SSERVI</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="#research">Explore research</a>
+          <a class="btn secondary" href="#publications">Publications</a>
+          <!-- Upload a CV file named cv.pdf to the same GitHub repository, then uncomment:
+          <a class="btn secondary" href="cv.pdf">CV (PDF)</a>
+          -->
+        </div>
+      </div>
+      <div>
+        <img class="portrait" src="headshot.jpg" alt="Headshot of Andrea Rajšić">
+        <div class="portrait-note">Andrea Rajšić</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Research</div>
+            <h2 class="section-title">How impacts write planetary history into the crust</h2>
+          </div>
+          <p class="section-intro">
+            My research program asks what structures impacts leave behind in planetary crusts and how we can
+            decode those structures to recover the processes that formed them. I approach this through three
+            connected directions spanning seismic observations, gravity, and shock-physics models.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="num">01</div>
+            <h3>Impact Seismology: Sources to Planetary Structure</h3>
+            <p>
+              I study how impact-generated shock waves become observable seismic signals and how those signals
+              depend on regolith, porosity, layering, fracturing, and subsurface ice. The long-term goal is to
+              use impacts as calibrated probes of crustal structure on the Moon, Mars, and future icy-world missions.
+            </p>
+          </article>
+          <article class="card">
+            <div class="num">02</div>
+            <h3>Gravity Datasets & Crustal Evolution</h3>
+            <p>
+              I combine GRAIL gravity observations with impact simulations to determine how shock compaction,
+              fracturing, and dilatancy reshape crustal density and porosity. The goal is to understand how impact craters induce and reduce porosity in ancient planetary crusts.
+            </p>
+          </article>
+          <article class="card">
+            <div class="num">03</div>
+            <h3>Seismic-Wave Physics & Basin Formation</h3>
+            <p>
+              I use seismic-wave physics to improve models of complex crater and basin collapse, including
+              acoustic-fluidization models of transient weakening. The aim is to move beyond reproducing final
+              crater morphology and instead reconstruct how deformation evolves through time.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Publications</div>
+            <h2 class="section-title">Selected publications</h2>
+          </div>
+          <p class="section-intro">
+            A selected list is shown here. For the complete list, see <a href="https://scholar.google.com/citations?user=MmzscbcAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>. Publications span impact-generated seismicity, lunar and Martian regolith, crater collapse, planetary radar, and impact-driven crustal evolution.
+          </p>
+        </div>
+        <div class="pub-list">
+          <div class="pub">
+            <div class="pub-year">2026</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🌕</span>Moon</span></div><div class="pub-title">New Constraints on the Spatial and Temporal Evolution of the Lunar Surface Regolith</div>
+            <div class="pub-meta"><strong>Andrea Rajšić</strong>, Ingrid J. Daubar, Sierra Khan, Matthew J. Jones · <em>The Planetary Science Journal</em> 7, 166 · <a href="https://doi.org/10.3847/PSJ/ae7a6f">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2025 · PREPRINT</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">Impact Modeling and Remote Sensing of Jezero Crater Rim: Implications for Mars Sample Return</div>
+            <div class="pub-meta">Adomas Valantinas, <strong>Andrea Rajšić</strong>, John F. Mustard, Ingrid J. Daubar · <em>ESS Open Archive eprints</em> 589 · <a href="https://doi.org/10.22541/essoar.175579625.58968122/v1">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2024</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🌍</span>Earth</span><span class="planet"><span class="icon">🌕</span>Moon</span></div><div class="pub-title">Using the Melosh model of acoustic fluidization to simulate impact crater collapse on the Earth and Moon</div>
+            <div class="pub-meta"><strong>Andrea Rajšić</strong>, Brandon C. Johnson, Gareth S. Collins, Hamish C. F. C. Hay · <em>Journal of Geophysical Research: Planets</em> 129 · <a href="https://doi.org/10.1029/2024JE008562">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2024</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🌍</span>Earth</span><span class="planet"><span class="icon">🌕</span>Moon</span></div><div class="pub-title">Complex crater collapse: A comparison of the block and Melosh acoustic fluidization models of transient target weakening</div>
+            <div class="pub-meta">Hamish C. F. C. Hay, Gareth S. Collins, Thomas M. Davison, <strong>Andrea Rajšić</strong>, Brandon C. Johnson · <em>Journal of Geophysical Research: Planets</em> 129 · <a href="https://doi.org/10.1029/2024JE008544">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2024</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🌕</span>Moon</span></div><div class="pub-title">Deep learning driven interpretation of Chang'E-4 lunar penetrating radar</div>
+            <div class="pub-meta">G. Roncoroni, E. Forte, I. Santin, A. Černok, <strong>Andrea Rajšić</strong>, A. Frigeri, W. Zhao, G. Fang, M. Pipan · <em>Icarus</em> 421, 116219 · <a href="https://doi.org/10.1016/j.icarus.2024.116219">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2024</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🌕</span>Moon</span></div><div class="pub-title">High frequency Lunar Penetrating Radar quality control, editing and processing of Chang’E-4 lunar mission</div>
+            <div class="pub-meta">G. Roncoroni, E. Forte, I. Santin, A. Černok, <strong>Andrea Rajšić</strong>, A. Frigeri, M. Pipan · <em>Scientific Data</em> 11, 118 · <a href="https://doi.org/10.1038/s41597-024-02963-4">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2023</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">Seismic efficiency and seismic moment for small craters on Mars formed in the layered uppermost crust</div>
+            <div class="pub-meta"><strong>Andrea Rajšić</strong>, Katarina Miljković, Natalia Wójcicka, Gareth S. Collins, Raphael F. Garcia, Callum Bredemeyer, Anthony Lagain, Ingrid J. Daubar, Philippe Lognonné · <em>Journal of Geophysical Research: Planets</em> 128 · <a href="https://doi.org/10.1029/2022JE007698">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2022</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">Largest recent impact craters on Mars: Orbital imaging and surface seismic co-investigation</div>
+            <div class="pub-meta">Liliya V. Posiolova et al., including <strong>Andrea Rajšić</strong> · <em>Science</em> 378, 412–417 · <a href="https://doi.org/10.1126/science.abq7704">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2022</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">Newly formed craters on Mars located using seismic and acoustic wave data from InSight</div>
+            <div class="pub-meta">Raphael F. Garcia et al., including <strong>Andrea Rajšić</strong> · <em>Nature Geoscience</em> 15, 774–780 · <a href="https://doi.org/10.1038/s41561-022-01014-0">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2022</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">Early crustal processes revealed by the ejection site of the oldest Martian meteorite</div>
+            <div class="pub-meta">Anthony Lagain et al., including <strong>Andrea Rajšić</strong> · <em>Nature Communications</em> 13, 3782 · <a href="https://doi.org/10.1038/s41467-022-31444-8">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2021</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🌕</span>Moon</span></div><div class="pub-title">Numerical simulations of the Apollo S-IVB artificial impacts on the Moon</div>
+            <div class="pub-meta"><strong>Andrea Rajšić</strong>, Katarina Miljković, Natalia Wójcicka, Gareth S. Collins, Keisuke Onodera, Taichi Kawamura, Philippe Lognonné, Mark A. Wieczorek, Ingrid J. Daubar · <em>Earth and Space Science</em> 8 · <a href="https://doi.org/10.1029/2021EA001887">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2021</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">The Tharsis mantle source of depleted shergottites revealed by 90 million impact craters</div>
+            <div class="pub-meta">Anthony Lagain et al., including <strong>Andrea Rajšić</strong> · <em>Nature Communications</em> 12, 6352 · <a href="https://doi.org/10.1038/s41467-021-26648-3">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2021</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">Seismic efficiency for simple crater formation in the Martian top crust analog</div>
+            <div class="pub-meta"><strong>Andrea Rajšić</strong>, Katarina Miljković, Gareth S. Collins, Kai Wünnemann, Ingrid J. Daubar, Natalia Wójcicka, Mark A. Wieczorek · <em>Journal of Geophysical Research: Planets</em> 126 · <a href="https://doi.org/10.1029/2020JE006662">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2020</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">The seismic moment and seismic efficiency of small impacts on Mars</div>
+            <div class="pub-meta">Natalia Wójcicka, Gareth S. Collins, Ian D. Bastow, Nicholas A. Teanby, Katarina Miljković, <strong>Andrea Rajšić</strong>, Ingrid J. Daubar, Philippe Lognonné · <em>Journal of Geophysical Research: Planets</em> 125 · <a href="https://doi.org/10.1029/2020JE006540">DOI</a></div>
+          </div>
+          <div class="pub">
+            <div class="pub-year">2020</div>
+            <div class="planet-tags"><span class="planet"><span class="icon">🔴</span>Mars</span></div><div class="pub-title">A new crater near InSight: Implications for seismic impact detectability on Mars</div>
+            <div class="pub-meta">Ingrid J. Daubar et al. · <em>Journal of Geophysical Research: Planets</em> 125 · <a href="https://doi.org/10.1029/2020JE006382">DOI</a></div>
+          </div>
+        </div></div>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">People & Mentoring</div>
+            <h2 class="section-title">Building research through mentorship</h2>
+          </div>
+          <p class="section-intro">
+            My mentoring spans postdoctoral researchers, graduate students, and undergraduate researchers.
+            This section highlights the people I work with and my role in supporting their research development.
+          </p>
+        </div>
+        <div class="two-col">
+          <div>
+            <div class="person-group">
+              <h3>Postdoctoral researchers</h3>
+              <div class="people-grid">
+                <div class="person"><strong>Andrea Bryant</strong><span>Brown University · 2026–present</span></div>
+                <div class="person"><strong>Austin Blevins</strong><span>Brown University · 2026–present</span></div>
+              </div>
+            </div>
+            <div class="person-group">
+              <h3>Graduate researcher</h3>
+              <div class="people-grid">
+                <div class="person"><strong>Carol Hundal</strong><span>Brown University · 2024–2026 · Main advisor: John Mustard</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="person-group">
+              <h3>Undergraduate researchers</h3>
+              <div class="people-grid">
+                <div class="person"><strong>Skye Rosario</strong><span>Brown University · 2026</span></div>
+                <div class="person"><strong>Mable Taiwo</strong><span>Brown University · 2026</span></div>
+                <div class="person"><strong>Walker Milhof</strong><span>Brown University · 2026</span></div>
+                <div class="person"><strong>Sadie Allspaw</strong><span>Brown University · 2025</span></div>
+                <div class="person"><strong>Haoyang Xu</strong><span>Brown University · 2025</span></div>
+                <div class="person"><strong>Sierra Khan</strong><span>Brown University · 2024–2025</span></div>
+                <div class="person"><strong>Jonah Bernesten-Schalet</strong><span>Brown University · 2024</span></div>
+                <div class="person"><strong>Callum Bredemeyer</strong><span>Curtin University · 2020</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Teaching</div>
+            <h2 class="section-title">Teaching across planetary science, geology, and field methods</h2>
+          </div>
+          <p class="section-intro">
+            Experience includes unit leadership, guest lectures, structural geology, geological mapping,
+            ArcGIS, geomorphology, planetary science, and field-based instruction.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="event"><div class="year">2025</div><div><h3>Independent Study (EEPS 1940) · Unit lead</h3><p>Brown University, Department of Earth, Environmental and Planetary Sciences.</p></div></div>
+          <div class="event"><div class="year">2024</div><div><h3>Earth, Moon and Mars (EEPS 0050) · Guest lecture</h3><p>Brown University · “Marsquakes: What did we learn?”</p></div></div>
+          <div class="event"><div class="year">2023</div><div><h3>Impacts (EAPS 591) · Guest lectures</h3><p>Purdue University · Studying impact craters; transient crater scaling; modification stage.</p></div></div>
+          <div class="event"><div class="year">2022</div><div><h3>Planetary Surface Processes (EAPS 556) · Guest lectures</h3><p>Purdue University · Crater morphology and crater dynamics.</p></div></div>
+          <div class="event"><div class="year">2019–21</div><div><h3>Teaching Assistant · Curtin University</h3><p>Structural Geology, Geological Field Mapping, Geology Virtual Field Experience, and Planetary Science.</p></div></div>
+          <div class="event"><div class="year">2017–18</div><div><h3>Teaching Assistant · University of Belgrade</h3><p>Geological Mapping, ArcGIS Applications in Geology, Essentials of Geology, Geomorphology, and Structural Geology.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="talks">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Talks & Conferences</div>
+            <h2 class="section-title">Selected invited talks</h2>
+          </div>
+          <p class="section-intro">
+            A selected list of invited seminars, webinars, and conference presentations.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="event"><div class="year">2026</div><div><h3>AGU Invited Speaker · Planetary Impact Cratering Processes</h3><p>“Formation of Terrace Zones during Chicxulub Basin Collapse.”</p></div></div>
+          <div class="event"><div class="year">2026</div><div><h3>AIAA Space Resources Webinar</h3><p>“Impact crater here, Impact crater there, and what to do with them.”</p></div></div>
+          <div class="event"><div class="year">2026</div><div><h3>Brown University</h3><p>“Shock, Collapse, and Shake: What Impact Craters Tell Us About Planets.”</p></div></div>
+          <div class="event"><div class="year">2025</div><div><h3>University of Oxford</h3><p>“Uncovering Planetary Histories Through Impact Craters.”</p></div></div>
+          <div class="event"><div class="year">2025</div><div><h3>University of Houston</h3><p>“Uncovering Planetary Histories Through Impact Craters.”</p></div></div>
+          <div class="event"><div class="year">2024</div><div><h3>MIT</h3><p>“Uncovering Lunar History Through Impact Craters.”</p></div></div>
+          <div class="event"><div class="year">2024</div><div><h3>Università degli Studi di Trieste</h3><p>“Revealing Lunar Surface and Interior Evolution from Impact Cratering Record.”</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outreach">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Outreach</div>
+            <h2 class="section-title">Planetary science beyond the university</h2>
+          </div>
+          <p class="section-intro">
+            I have participated in public science engagement across the United States and Western Australia,
+            including museum programs, public lectures, astronomy events, school outreach, and mentoring.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="num">2026</div>
+            <h3>Moon Room & Planetarium Show</h3>
+            <p>Designing a long-term Moon-inspired exhibit and planetarium show for the Roger Williams Natural History Museum and Planetarium, with LunaSCOPE and Rhode Island Space Grant.</p>
+          </article>
+          <article class="card">
+            <div class="num">2026</div>
+            <h3>LunaSCOPE Artist in Residence</h3>
+            <p>Supervising a summer artist-in-residence program with an exhibition planned at Brown Arts Institute.</p>
+          </article>
+          <article class="card">
+            <div class="num">2026</div>
+            <h3>Astronomy on Tap Rhode Island</h3>
+            <p>Funding and planetary-science representative supporting informal public science engagement.</p>
+          </article>
+          <article class="card">
+            <div class="num">2025</div>
+            <h3>Public Lecture · Seagrave Memorial Observatory</h3>
+            <p>Public lecture hosted by Skyscrapers, Inc. in Rhode Island.</p>
+          </article>
+          <article class="card">
+            <div class="num">2024</div>
+            <h3>RISD Makerspace Program</h3>
+            <p>Scientific advisor and lecturer connecting planetary science with creative making and design.</p>
+          </article>
+          <article class="card">
+            <div class="num">2019–21</div>
+            <h3>Western Australia STEM Outreach</h3>
+            <p>Science Day at Northam School, Innovators’ Tea Party, Perth Science Festival, Astrofest, SPACEApps, and Curtin Open Day.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <h3>Contact & professional links</h3>
+            <p>Email, Google Scholar, ORCID, and full curriculum vitae.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="mailto:andrea_rajsic@brown.edu">Email</a>
+            <a class="btn secondary" href="https://scholar.google.com/citations?user=MmzscbcAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="btn secondary" href="https://orcid.org/0000-0002-8598-0815" target="_blank" rel="noopener">ORCID</a>
+            <a class="btn secondary" href="Andrea_Rajsic_CV.pdf" target="_blank" rel="noopener">CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 Andrea Rajšić</div>
+      <div class="small">Planetary geophysics · Impact physics</div>
+    </div>
+  </footer>
 </body>
 </html>
